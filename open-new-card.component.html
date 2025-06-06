@@ -1,0 +1,122 @@
+<app-header [showGoBack]="true" [title]="'Open new card'" />
+
+<img src="./assets/bg/03.png" alt="bg" class="background open-new-card-bg" />
+
+<main class="open-new-card-main">
+  <!-- Type -->
+  <section class="open-new-card-section open-new-card-section--type">
+    <span class="open-new-card-label">Type:</span>
+    <ul class="open-new-card-type-list">
+      <li *ngFor="let item of cardTypes">
+        <button
+          class="open-new-card-type-btn"
+          [ngStyle]="{
+            'background-color': selectedCardType === item ? '#1B1D4D' : 'var(--white-color)', 
+          }"
+          (click)="selectedCardType = item"
+        >
+          <span
+            [ngStyle]="{
+            'color': selectedCardType === item ? 'var(--white-color)' : 'var(--main-dark)', 
+          }"
+            class="open-new-card-type-text"
+          >
+            {{ item }}
+          </span>
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Payment system: -->
+  <section class="open-new-card-section open-new-card-section--payment">
+    <span class="open-new-card-label">Payment system:</span>
+    <ul class="open-new-card-payment-list">
+      <li *ngFor="let item of paymentSystems">
+        <button
+          class="open-new-card-payment-btn"
+          (click)="selectedPaymentSystem = item"
+        >
+          <div class="open-new-card-payment-radio">
+            <div
+              class="open-new-card-payment-radio-dot"
+              *ngIf="selectedPaymentSystem === item"
+            ></div>
+          </div>
+          <img
+            [src]="'https://george-fx.github.io/teofin-data/icons/04.png'"
+            *ngIf="item === 'Visa'"
+            class="open-new-card-payment-img open-new-card-payment-img--visa"
+          />
+          <img
+            [src]="'https://george-fx.github.io/teofin-data/icons/05.png'"
+            *ngIf="item === 'Mastercard'"
+            class="open-new-card-payment-img open-new-card-payment-img--mc"
+          />
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Credit Card -->
+  <section class="open-new-card-section open-new-card-section--card">
+    <div class="open-new-card-card">
+      <span class="open-new-card-card-title">teofin debet card</span>
+      <div class="open-new-card-card-row open-new-card-card-row--number">
+        <span class="open-new-card-card-number">4325 **** **** 6475</span>
+      </div>
+      <div class="open-new-card-card-row open-new-card-card-row--labels">
+        <span class="open-new-card-card-label open-new-card-card-label--balance"
+          >balance</span
+        >
+        <span class="open-new-card-card-label open-new-card-card-label--expire"
+          >expire</span
+        >
+      </div>
+      <div class="open-new-card-card-row open-new-card-card-row--bottom">
+        <span class="open-new-card-card-balance">$ 200 000.00</span>
+        <span class="open-new-card-card-expire">12/25</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="open-new-card-section open-new-card-section--desc">
+    <p class="open-new-card-desc">
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+      dolore eu fugiat nulla pariatur.
+    </p>
+  </section>
+
+  <!-- Choose currency: -->
+  <section class="open-new-card-section open-new-card-section--currency">
+    <span class="open-new-card-label open-new-card-label--currency">
+      Choose currency:
+    </span>
+    <ul class="open-new-card-currency-list">
+      <li *ngFor="let item of currencies">
+        <button
+          class="open-new-card-currency-btn"
+          [ngStyle]="{
+            'background-color': selectedCurrency === item ? '#1B1D4D' : 'var(--white-color)', 
+          }"
+          (click)="selectedCurrency = item"
+        >
+          <span
+            [ngStyle]="{
+            'color': selectedCurrency === item ? 'var(--white-color)' : 'var(--main-dark)', 
+          }"
+            class="open-new-card-currency-text"
+          >
+            {{ item }}
+          </span>
+        </button>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<!-- Button -->
+<section class="open-new-card-bottom-section">
+  <app-button [text]="'Add new card'" [routerLink]="'/more'" />
+</section>

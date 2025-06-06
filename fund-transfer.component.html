@@ -1,0 +1,64 @@
+<app-header [showGoBack]="true" [title]="'Fund transfer'" />
+
+<main class="fund-transfer-main">
+  <!-- Use сard -->
+  <section class="fund-transfer-section">
+    <span class="fund-transfer-label">Use card:</span>
+    <ul class="fund-transfer-card-list">
+      <li *ngFor="let item of cards">
+        <button
+          class="fund-transfer-card-btn"
+          [style]="{
+            'border': selectedCard === item.id ? '1px solid #868698' : '1px solid #fff',
+          }"
+          (click)="
+            $event.stopPropagation();
+            $event.preventDefault();
+            setSelectedCard(item.id)
+          "
+        >
+          <div class="fund-transfer-card-bg">
+            <span class="fund-transfer-card-label">teofin</span>
+          </div>
+          <div class="fund-transfer-card-info">
+            <span class="fund-transfer-card-number">{{ item.number }}</span>
+            <h6>{{ item.balance }}</h6>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Send money to: -->
+  <section class="fund-transfer-section">
+    <span class="fund-transfer-label">Send money to:</span>
+    <app-input-field [value]="'enter card number'" />
+  </section>
+
+  <!-- Details -->
+  <section>
+    <app-input-field
+      [value]="'amount'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-input-field
+      [value]="'comment'"
+      [containerStyle]="{
+        height: '120px',
+        'align-items': 'flex-start',
+        'padding-top': '10px',
+        'margin-bottom': '6px'
+      }"
+    />
+    <span class="fund-transfer-fee">Bank fee: $ 0.20</span>
+  </section>
+
+  <!-- Button -->
+  <section>
+    <app-button
+      [text]="'Send'"
+      [containerStyle]="{'margin-top': '20px'}"
+      [routerLink]="'/payment-success'"
+    />
+  </section>
+</main>

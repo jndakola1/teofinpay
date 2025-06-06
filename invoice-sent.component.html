@@ -1,0 +1,19 @@
+<img src="./assets/bg/03.png" alt="bg" class="background invoice-sent-bg" />
+
+<main class="invoice-sent-main">
+  <div class="invoice-sent-content">
+    <img [src]="svg.invoiceMail" />
+    <span class="invoice-sent-title"
+      >Your invoice <br />
+      has been sent!</span
+    >
+    <p class="invoice-sent-desc">
+      Qui ex aute ipsum duis. Incididunt <br />
+      adipisicing voluptate laborum
+    </p>
+  </div>
+</main>
+
+<section class="invoice-sent-section">
+  <app-button [text]="'Done'" [routerLink]="'/dashboard'" />
+</section>

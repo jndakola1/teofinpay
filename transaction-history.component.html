@@ -1,0 +1,90 @@
+<app-header [showGoBack]="true" [title]="'Transaction history'" />
+
+<main class="transaction-history-main">
+  <!-- search -->
+  <section class="transaction-history-section">
+    <app-input-field [value]="'search'" />
+  </section>
+
+  <!-- Today -->
+  <section class="transaction-history-section">
+    <span class="transaction-history-date-label">Today</span>
+    <ul class="transaction-history-list">
+      <li *ngFor="let item of transactions.slice(0, 2)">
+        <a
+          class="transaction-history-link"
+          [routerLink]="['/transaction-details']"
+        >
+          <img [src]="item.icon" alt="icon" class="transaction-history-icon" />
+          <div>
+            <h6 class="transaction-history-name">{{ item.name }}</h6>
+            <span class="transaction-history-category">{{
+              item.category
+            }}</span>
+          </div>
+          <h6 class="transaction-history-amount">
+            {{ item.type === 'income' ? '+' : '-' }} {{ item.amount }}
+          </h6>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Sep 10, 2022 -->
+  <section class="transaction-history-section">
+    <span class="transaction-history-date-label">Sep 5, 2022</span>
+    <ul class="transaction-history-list">
+      <li *ngFor="let item of transactions.slice(2, 5)">
+        <a
+          class="transaction-history-link"
+          [routerLink]="['/transaction-details']"
+        >
+          <img [src]="item.icon" alt="icon" class="transaction-history-icon" />
+          <div>
+            <h6 class="transaction-history-name">{{ item.name }}</h6>
+            <span class="transaction-history-category">{{
+              item.category
+            }}</span>
+          </div>
+          <h6
+            class="transaction-history-amount"
+            [ngStyle]="{
+            color: item.type === 'income' ? '#3EB290' : '#1B1D4D',
+          }"
+          >
+            {{ item.type === 'income' ? '+' : '-' }} {{ item.amount }}
+          </h6>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Sep 5, 2022 -->
+  <section class="transaction-history-section">
+    <span class="transaction-history-date-label">Sep 10, 2022</span>
+    <ul class="transaction-history-list">
+      <li *ngFor="let item of transactions.slice(5, 8)">
+        <a
+          class="transaction-history-link"
+          [routerLink]="['/transaction-details']"
+        >
+          <img [src]="item.icon" alt="icon" class="transaction-history-icon" />
+          <div>
+            <h6 class="transaction-history-name">{{ item.name }}</h6>
+            <span class="transaction-history-category">{{
+              item.category
+            }}</span>
+          </div>
+          <h6
+            class="transaction-history-amount"
+            [ngStyle]="{
+            color: item.type === 'income' ? '#3EB290' : '#1B1D4D',
+          }"
+          >
+            {{ item.type === 'income' ? '+' : '-' }} {{ item.amount }}
+          </h6>
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>

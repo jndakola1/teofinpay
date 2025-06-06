@@ -1,0 +1,54 @@
+<app-header [showGoBack]="true" [title]="'Card menu'" />
+
+<main class="card-menu-main">
+  <!-- Use сard -->
+  <section class="card-menu-section card-menu-section--card">
+    <span class="card-menu-label">Use card:</span>
+    <ul class="card-menu-card-list">
+      <li *ngFor="let item of cards">
+        <a class="card-menu-card-link" [routerLink]="['/card-details']">
+          <div class="card-menu-card-bg">
+            <span class="card-menu-card-label">teofin</span>
+          </div>
+          <div class="card-menu-card-info">
+            <span class="card-menu-card-number">{{ item.number }}</span>
+            <h6>{{ item.balance }}</h6>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Entrepreneur accounts -->
+  <section class="card-menu-section card-menu-section--entrepreneur">
+    <span class="card-menu-label">Entrepreneur accounts</span>
+    <button class="card-menu-entrepreneur-btn">
+      <img [src]="svg.usd" />
+      <div class="card-menu-entrepreneur-info">
+        <span class="card-menu-entrepreneur-number"
+          >US**********************4571</span
+        >
+        <h6 class="card-menu-entrepreneur-balance">39 863.62 USD</h6>
+      </div>
+    </button>
+  </section>
+
+  <!-- Ongoing credits -->
+  <section class="card-menu-section card-menu-section--credits">
+    <span class="card-menu-label">Ongoing credits</span>
+    <button class="card-menu-credits-btn">
+      <div class="card-menu-credits-bg">
+        <span class="card-menu-credits-label">teofin</span>
+      </div>
+      <div class="card-menu-credits-info">
+        <span class="card-menu-credits-number">**** **** 6547</span>
+        <h6 class="card-menu-credits-balance">1687.62 USD</h6>
+      </div>
+    </button>
+  </section>
+
+  <!-- Add a new card -->
+  <a class="card-menu-add-card-link" [routerLink]="['/open-new-card']">
+    <img [src]="svg.addANewCard" />
+  </a>
+</main>

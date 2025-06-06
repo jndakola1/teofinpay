@@ -1,0 +1,107 @@
+<app-header [showGoBack]="true" [title]="'Open new loan'" />
+
+<main class="open-new-loan-main">
+  <!-- Choose currency: -->
+  <section class="open-new-loan-section">
+    <span class="open-new-loan-label">Choose currency:</span>
+    <ul class="open-new-loan-list open-new-loan-list--currency">
+      <li *ngFor="let currency of currencies">
+        <button
+          class="open-new-loan-btn open-new-loan-btn--currency"
+          [ngStyle]="{
+            backgroundColor:
+              currency.id === selectedCurrency
+                ? 'var(--main-dark)'
+                : 'var(--white-color)'
+          }"
+          (click)="selectedCurrency = currency.id"
+        >
+          <span
+            [ngStyle]="{
+              color:
+                currency.id === selectedCurrency
+                  ? 'var(--white-color)'
+                  : 'var(--main-dark)'
+            }"
+            class="open-new-loan-btn-label"
+            >{{ currency.label }}</span
+          >
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Choose deposit period: -->
+  <section class="open-new-loan-section">
+    <span class="open-new-loan-label">Choose deposit period:</span>
+    <ul class="open-new-loan-list open-new-loan-list--period">
+      <li *ngFor="let currency of depositPeriods">
+        <button
+          class="open-new-loan-btn open-new-loan-btn--period"
+          [ngStyle]="{
+            backgroundColor:
+              currency.id === selectedDepositPeriod
+                ? 'var(--main-dark)'
+                : 'var(--white-color)'
+          }"
+          (click)="selectedDepositPeriod = currency.id"
+        >
+          <span
+            [ngStyle]="{
+              color:
+                currency.id === selectedDepositPeriod
+                  ? 'var(--white-color)'
+                  : 'var(--body-text-color)'
+            }"
+            class="open-new-loan-btn-label"
+            >{{ currency.label }}</span
+          >
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Amount -->
+  <section class="open-new-loan-section">
+    <span class="open-new-loan-label">Amount:</span>
+    <div class="open-new-loan-amount-row">
+      <div class="open-new-loan-amount-box">
+        <span class="open-new-loan-amount-main">$25 000.</span>
+        <span class="open-new-loan-amount-fraction">00</span>
+      </div>
+      <span class="open-new-loan-rate">You rate is 13%.</span>
+    </div>
+  </section>
+
+  <!-- Calculated monthly repayment -->
+  <section class="open-new-loan-section open-new-loan-section--repayment">
+    <span class="open-new-loan-label">Calculated monthly repayment:</span>
+    <div class="open-new-loan-amount-row">
+      <div class="open-new-loan-amount-box">
+        <span class="open-new-loan-amount-main">$1 117.</span>
+        <span class="open-new-loan-amount-fraction">00</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Early deposit withdrawal -->
+  <section>
+    <div class="open-new-loan-switch-row">
+      <span class="open-new-loan-switch-label">Early loan repayment</span>
+      <div
+        class="open-new-loan-switch"
+        [ngStyle]="{
+          'justify-content': earlyDepositWithdrawal ? 'flex-end' : 'flex-start',
+          'background-color': earlyDepositWithdrawal ? '#34c759' : '#B2B2B2'
+        }"
+        (click)="earlyDepositWithdrawal = !earlyDepositWithdrawal"
+      >
+        <div class="open-new-loan-switch-dot"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="open-new-loan-bottom-section">
+  <app-button [text]="'open new loan'" [routerLink]="'/loans'" />
+</section>

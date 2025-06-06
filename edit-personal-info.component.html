@@ -1,0 +1,45 @@
+<app-header [showGoBack]="true" [title]="'Edit personal info'" />
+
+<main class="edit-personal-main">
+  <div class="edit-personal-avatar-wrapper">
+    <img
+      src="https://george-fx.github.io/teofin-data/photos/01.jpg"
+      alt="user"
+      class="edit-personal-avatar-img"
+    />
+    <div class="edit-personal-avatar-overlay">
+      <img [src]="svg.piCamera" alt="edit" class="edit-personal-avatar-icon" />
+    </div>
+  </div>
+  <app-input-field
+    [value]="'cristinawolf@gmail.com'"
+    [containerStyle]="{
+      marginBottom: '14px',
+    }"
+  />
+  <app-input-field
+    [value]="'+171 123 456 7890'"
+    [containerStyle]="{
+      marginBottom: '14px',
+    }"
+  />
+  <app-input-field
+    [value]="'Enter your email'"
+    [containerStyle]="{
+      marginBottom: '14px',
+    }"
+  />
+  <app-input-field
+    [value]="'MM/DD/YYYY'"
+    [containerStyle]="{
+      marginBottom: '14px',
+    }"
+  />
+  <app-input-field
+    [value]="'Enter your address'"
+    [containerStyle]="{
+      marginBottom: '14px',
+    }"
+  />
+  <app-button [text]="'Save'" />
+</main>

@@ -1,0 +1,63 @@
+<app-header [showGoBack]="true" [title]="'Create invoice'" />
+
+<main class="invoice-main">
+  <app-input-field
+    [value]="'Company name'"
+    [containerStyle]="{
+      marginBottom: '14px',
+    }"
+  />
+  <app-input-field
+    [value]="'Country'"
+    [containerStyle]="{
+      marginBottom: '14px',
+    }"
+  />
+  <app-input-field
+    [value]="'Company email'"
+    [containerStyle]="{
+      marginBottom: '14px',
+    }"
+  />
+  <app-input-field
+    [value]="'Amount'"
+    [containerStyle]="{
+      marginBottom: '14px',
+    }"
+  />
+  <span class="invoice-label">Choose currency:</span>
+  <ul class="invoice-currency-list">
+    <li *ngFor="let item of currencies">
+      <button
+        class="invoice-currency-btn"
+        [ngStyle]="{
+            'background-color': selectedCurrency === item ? '#1B1D4D' : 'var(--white-color)', 
+          }"
+        (click)="selectedCurrency = item"
+      >
+        <span
+          [ngStyle]="{
+            'color': selectedCurrency === item ? 'var(--white-color)' : 'var(--main-dark)', 
+          }"
+          class="invoice-currency-text"
+        >
+          {{ item }}
+        </span>
+      </button>
+    </li>
+  </ul>
+  <app-input-field
+    [value]="'Goods or services you provided'"
+    [containerStyle]="{
+      marginBottom: '14px',
+      height: '120px',
+      'align-items': 'flex-start',
+      'padding-top': '10px',
+    }"
+  />
+  <span class="invoice-fee-note">Bank fee is charged from the payer.</span>
+</main>
+
+<section class="invoice-section">
+  <app-button [text]="'Send invoice'" [routerLink]="'/invoice-sent'" />
+</section>

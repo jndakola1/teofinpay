@@ -1,0 +1,79 @@
+<app-header
+  [showCreditCard]="true"
+  [showUser]="true"
+  [showCurrency]="true"
+  [showBorder]="true"
+/>
+
+<main class="main-container">
+  <!-- ACTIONS -->
+  <section class="dashboard-actions-section">
+    <ul class="dashboard-actions-list">
+      <li *ngFor="let item of actions">
+        <a class="dashboard-action-link" [routerLink]="item.link">
+          <img class="dashboard-action-img" [src]="item.icon" alt="action" />
+          <span class="dashboard-action-title" [innerHTML]="item.title"></span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CARDS -->
+  <section class="dashboard-cards-section">
+    <span class="dashboard-cards-title">Cards</span>
+    <ul class="dashboard-cards-list">
+      <li *ngFor="let item of cards">
+        <a class="dashboard-card-link" [routerLink]="'/card-details'">
+          <div class="dashboard-card-bg">
+            <span class="dashboard-card-label">teofin</span>
+          </div>
+          <div class="dashboard-card-info">
+            <span class="dashboard-card-number">{{ item.number }}</span>
+            <h6>{{ item.balance }}</h6>
+          </div>
+          <img [src]="svg.rightArrow" alt="card" />
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- TRANSACTIONS -->
+  <section class="dashboard-transactions-section">
+    <div class="dashboard-transactions-header">
+      <span class="dashboard-transactions-title">Latest transactions</span>
+      <a
+        class="dashboard-transactions-viewall"
+        [routerLink]="'/transaction-history'"
+        >View all</a
+      >
+    </div>
+    <ul class="dashboard-transactions-list">
+      <li *ngFor="let item of transactions">
+        <a
+          class="dashboard-transaction-link"
+          [routerLink]="'/transaction-details'"
+        >
+          <img
+            [src]="item.icon"
+            alt="transaction"
+            class="dashboard-transaction-icon"
+          />
+          <div class="dashboard-transaction-info">
+            <span class="dashboard-transaction-name">{{ item.name }}</span>
+            <span class="dashboard-transaction-category">{{
+              item.category
+            }}</span>
+          </div>
+          <span
+            class="dashboard-transaction-amount"
+            [ngStyle]="{color: item.type === 'income' ? '#3EB290' : '#1B1D4D'}"
+          >
+            {{ item.type === 'income' ? '+' : '-' }} {{ item.amount }}
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<app-bottom-tab-bar />

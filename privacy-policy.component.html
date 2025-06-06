@@ -1,0 +1,13 @@
+<app-header [showGoBack]="true" [title]="'Privacy policy'" />
+
+<main class="privacy-policy-main">
+  <h1 class="privacy-policy-title">Privacy policy</h1>
+  <ul class="privacy-policy-list">
+    <li *ngFor="let item of privacyPolicy; let last = last">
+      <span class="privacy-policy-list-title">{{ item.title }}</span>
+      <p class="privacy-policy-list-content">
+        {{ item.content }}
+      </p>
+    </li>
+  </ul>
+</main>

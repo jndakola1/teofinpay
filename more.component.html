@@ -1,0 +1,16 @@
+<main class="main-container">
+  <!-- TITLE -->
+  <h2 class="more-title">More</h2>
+
+  <!-- MENU -->
+  <ul class="more-menu-list">
+    <li *ngFor="let item of menuItems">
+      <a class="more-menu-link" [routerLink]="item.link">
+        <img [src]="item.icon" alt="icon" class="more-menu-icon" />
+        <span class="more-menu-title">{{ item.title }}</span>
+      </a>
+    </li>
+  </ul>
+</main>
+
+<app-bottom-tab-bar />

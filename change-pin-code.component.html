@@ -1,0 +1,17 @@
+<app-header [showGoBack]="true" [title]="'Change PIN code'" />
+
+<main class="change-pin-main">
+  <app-input-field
+    [value]="'••••'"
+    [containerStyle]="{'margin-bottom': '14px'}"
+  />
+  <app-input-field
+    [value]="'New PIN'"
+    [containerStyle]="{'margin-bottom': '14px'}"
+  />
+  <app-input-field
+    [value]="'Confirm PIN'"
+    [containerStyle]="{'margin-bottom': '14px'}"
+  />
+  <app-button [text]="'Save'" [routerLink]="['/dashboard']" />
+</main>

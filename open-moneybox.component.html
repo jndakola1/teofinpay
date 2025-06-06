@@ -1,0 +1,82 @@
+<app-header [showGoBack]="true" [title]="'Open moneybox'" />
+
+<main class="open-moneybox-main">
+  <!-- The amount you want to achieve: -->
+  <section class="open-moneybox-section open-moneybox-section--amount">
+    <span class="open-moneybox-label">The amount you want to achieve:</span>
+    <div class="open-moneybox-amount-block">
+      <span class="open-moneybox-amount-main">$1200.</span>
+      <span class="open-moneybox-amount-fraction">00</span>
+    </div>
+  </section>
+
+  <!-- Use сard -->
+  <section class="open-moneybox-section open-moneybox-section--card">
+    <span class="open-moneybox-label open-moneybox-label--card">Use card:</span>
+    <ul class="open-moneybox-card-list">
+      <li *ngFor="let item of cards">
+        <button
+          class="open-moneybox-card-btn"
+          [style]="{
+            border:
+              selectedCard === item.id ? '1px solid #868698' : '1px solid #fff'
+          }"
+          (click)="
+            $event.stopPropagation();
+            $event.preventDefault();
+            setSelectedCard(item.id)
+          "
+        >
+          <div class="open-moneybox-card-bg">
+            <span class="open-moneybox-card-label">teofin</span>
+          </div>
+          <div class="open-moneybox-card-info">
+            <span class="open-moneybox-card-number">{{ item.number }}</span>
+            <h6>{{ item.balance }}</h6>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Values -->
+  <section class="open-moneybox-section open-moneybox-section--values">
+    <ul class="open-moneybox-values-list">
+      <li
+        *ngFor="let item of options; let i = index"
+        [ngStyle]="{
+        'margin-bottom': i === 0 ? '8px' : '0px',
+      }"
+      >
+        <button
+          class="open-moneybox-value-btn"
+          (click)="
+            $event.stopPropagation();
+            $event.preventDefault();
+            selectedOption = item.id
+          "
+        >
+          <div class="open-moneybox-radio">
+            <div
+              class="open-moneybox-radio-dot"
+              *ngIf="selectedOption === item.id"
+            ></div>
+          </div>
+          <div *ngIf="i === 0" class="open-moneybox-value-amount-block">
+            <span class="open-moneybox-value-amount">10.00</span>
+          </div>
+          <span class="open-moneybox-value-label">{{ item.label }}</span>
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Enter your goal -->
+  <section class="open-moneybox-section open-moneybox-section--goal">
+    <app-input-field [value]="'Enter your goal'" />
+  </section>
+</main>
+
+<section class="open-moneybox-bottom-section">
+  <app-button [text]="'Open Moneybox'" [routerLink]="'/loans'" />
+</section>

@@ -1,0 +1,29 @@
+<app-header [showGoBack]="true" [title]="'Verification'" />
+
+<main class="main-container">
+  <section class="otp-section">
+    <p class="otp-instruction t16">Enter your OTP code here.</p>
+
+    <div class="otp-inputs">
+      <input type="text" maxlength="1" class="otp-input" />
+      <input type="text" maxlength="1" class="otp-input" />
+      <input type="text" maxlength="1" class="otp-input" />
+      <input type="text" maxlength="1" class="otp-input" />
+      <input type="text" maxlength="1" class="otp-input" />
+    </div>
+    <div class="otp-resend-row">
+      <span class="otp-resend-text">Didn’t receive the OTP?</span>
+      <button
+        (click)="$event.preventDefault(); $event.stopPropagation()"
+        class="otp-resend-btn"
+      >
+        <span class="otp-resend-link">Resend.</span>
+      </button>
+    </div>
+    <app-button
+      [text]="'Confirm'"
+      [routerLink]="'/sign-up-account-created'"
+      [containerStyle]="{width: '100%'}"
+    />
+  </section>
+</main>

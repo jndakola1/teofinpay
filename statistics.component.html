@@ -1,0 +1,155 @@
+<app-header [showGoBack]="true" [title]="'Statistics'" />
+
+<img src="./assets/bg/03.png" alt="bg" class="background statistics-bg" />
+
+<!-- status -->
+<section class="statistics-status-section">
+  <ul class="statistics-status-list">
+    <li *ngFor="let item of statuses">
+      <button
+        class="statistics-status-btn"
+        [ngStyle]="{
+            background:
+              item === selectedStatus
+                ? 'linear-gradient(91.28deg, #97DAFF 0%, #16579D 100%)'
+                : 'white',
+          }"
+        (click)="
+          $event.stopPropagation();
+          $event.preventDefault();
+          selectedStatus = item
+        "
+      >
+        <span
+          class="statistics-status-btn-label"
+          [ngStyle]="{
+              color: item === selectedStatus ? 'var(--white-color)' : 'var(--body-text-color)',
+            }"
+          >{{ item }}</span
+        >
+      </button>
+    </li>
+  </ul>
+</section>
+
+<main class="statistics-main">
+  <!-- date -->
+  <section class="statistics-date-section">
+    <div class="statistics-date-row">
+      <span class="statistics-date-label">Sep 1 - Sep 20, 2022</span>
+      <img [src]="svg.stCalendar" alt="calendar" />
+    </div>
+  </section>
+
+  <!-- card -->
+  <section class="statistics-card-section">
+    <button
+      class="statistics-card-btn"
+      (click)="$event.stopPropagation(); $event.preventDefault(); openModal()"
+    >
+      <!-- card image -->
+      <div class="statistics-card-img">
+        <span class="statistics-card-img-label">teofin</span>
+      </div>
+      <!-- card details -->
+      <div class="statistics-card-info">
+        <span class="statistics-card-number">{{ selectedCard.number }}</span>
+        <span class="statistics-card-balance">{{ selectedCard.balance }}</span>
+      </div>
+      <img [src]="svg.moreVertical" alt="arrow" />
+    </button>
+  </section>
+
+  <!-- Chart -->
+  <section class="statistics-chart-section">
+    <img [src]="svg.chart" alt="chart" class="statistics-chart-img" />
+  </section>
+
+  <!-- Total -->
+  <section class="statistics-total-section">
+    <span class="statistics-total">
+      - $ 11 654<span class="statistics-total-fraction">.24</span>
+    </span>
+  </section>
+
+  <!-- Transactions -->
+  <section class="statistics-transactions-section">
+    <ul class="statistics-transactions-list">
+      <li *ngFor="let item of selectedCard.transitions">
+        <a
+          class="statistics-transactions-link"
+          [routerLink]="'/transaction-details'"
+        >
+          <img [src]="item.icon" />
+          <div class="statistics-transactions-info">
+            <div
+              class="statistics-transactions-row statistics-transactions-row--main"
+            >
+              <span class="statistics-transactions-category">{{
+                item.category
+              }}</span>
+              <span class="statistics-transactions-amount">{{
+                item.amount
+              }}</span>
+            </div>
+            <div
+              class="statistics-transactions-row statistics-transactions-row--sub"
+            >
+              <span class="statistics-transactions-count"
+                >{{ item.transactions }} transactions</span
+              >
+              <span class="statistics-transactions-percent"
+                >{{ item.percentage }} %</span
+              >
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<!-- Modal bg -->
+<div class="statistics-modal-bg" *ngIf="showModal" (click)="closeModal()"></div>
+
+<!-- Modal content -->
+<div
+  *ngIf="showModal"
+  @slideUpModal
+  class="modal-container statistics-modal-container"
+>
+  <span class="statistics-modal-title">Choose card</span>
+  <ul class="statistics-modal-list">
+    <li
+      *ngFor="let item of cards"
+      class="statistics-modal-list-item"
+      (click)="
+        $event.stopPropagation();
+        $event.preventDefault();
+        selectedCard = item;
+        closeModal()
+      "
+    >
+      <!-- card image -->
+      <div class="statistics-modal-card-img">
+        <span class="statistics-modal-card-img-label">teofin</span>
+      </div>
+      <!-- details -->
+      <div class="statistics-modal-card-info">
+        <span class="statistics-modal-card-number">{{ item.number }}</span>
+        <span class="statistics-modal-card-balance">{{ item.balance }}</span>
+      </div>
+      <!-- Select -->
+      <div class="statistics-modal-card-radio">
+        <div
+          class="statistics-modal-card-radio-dot"
+          *ngIf="item === selectedCard"
+        ></div>
+      </div>
+    </li>
+  </ul>
+  <app-button
+    [text]="'Show statistics'"
+    (click)="$event.stopPropagation(); $event.preventDefault(); closeModal()"
+  />
+</div>

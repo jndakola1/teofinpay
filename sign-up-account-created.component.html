@@ -1,0 +1,20 @@
+<img src="./assets/bg/03.png" alt="bg" class="sign-up-bg-image" />
+
+<main class="sign-up-main">
+  <div class="sign-up-content">
+    <img
+      [src]="svg.personalBanking"
+      alt="personal banking"
+      class="sign-up-content__img"
+    />
+    <h1 class="sign-up-content__title">Account created!</h1>
+    <p class="sign-up-content__desc">
+      Your account had beed created <br />
+      successfully.
+    </p>
+  </div>
+</main>
+
+<section class="sign-up-section">
+  <app-button [text]="'Done'" [routerLink]="'/dashboard'" />
+</section>

@@ -1,0 +1,12 @@
+<app-header [showGoBack]="true" [title]="'Payments'" />
+
+<main class="payments-main">
+  <ul class="payments-list">
+    <li *ngFor="let item of payments">
+      <a class="payments-list-link" [routerLink]="item.link">
+        <img [src]="item.icon" alt="icon" class="payments-list-icon" />
+        <h6>{{ item.title }}</h6>
+      </a>
+    </li>
+  </ul>
+</main>

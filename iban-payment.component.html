@@ -1,0 +1,66 @@
+<app-header [showGoBack]="true" [title]="'IBAN payment'" />
+
+<main class="iban-payment-main">
+  <!-- Use сard -->
+  <section class="iban-payment-section">
+    <span class="iban-payment-label">Use card:</span>
+    <ul class="iban-payment-card-list">
+      <li *ngFor="let item of cards">
+        <button
+          class="iban-payment-card-btn"
+          [style]="{
+            'border': selectedCard === item.id ? '1px solid #868698' : '1px solid #fff',
+          }"
+          (click)="
+            $event.stopPropagation();
+            $event.preventDefault();
+            setSelectedCard(item.id)
+          "
+        >
+          <div class="iban-payment-card-bg">
+            <span class="iban-payment-card-label">teofin</span>
+          </div>
+          <div class="iban-payment-card-info">
+            <span class="iban-payment-card-number">{{ item.number }}</span>
+            <h6>{{ item.balance }}</h6>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Beneficiary info: -->
+  <section>
+    <span class="iban-payment-label">Beneficiary info:</span>
+    <app-input-field
+      [value]="'IBAN number'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-input-field
+      [value]="'beneficiary name'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-input-field
+      [value]="'BIC code'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-input-field
+      [value]="'beneficiary bank'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-input-field
+      [value]="'amount'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-input-field
+      [value]="'comment'"
+      [containerStyle]="{
+        height: '120px',
+        'align-items': 'flex-start',
+        'padding-top': '10px',
+        'margin-bottom': '14px'
+      }"
+    />
+    <app-button [text]="'Send'" [routerLink]="['/payment-success']" />
+  </section>
+</main>

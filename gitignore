@@ -1,0 +1,26 @@
+# Angular build artifacts
+/dist
+/tmp
+/out-tsc
+
+# Node modules
+/node_modules
+
+# Environment files
+/src/environments/environment*.ts
+
+# VS Code settings
+.vscode/
+
+# Logs
+npm-debug.log*
+firebase-debug.log*
+
+# IDE files
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated
+.DS_Store
+Thumbs.db

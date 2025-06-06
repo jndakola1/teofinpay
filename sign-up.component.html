@@ -1,0 +1,57 @@
+<app-header [showGoBack]="true" [title]="'Sign up'" />
+
+<main class="main-container">
+  <section class="section-container">
+    <h1 class="sign-up-title">Sign up</h1>
+    <app-input-field
+      [type]="'username'"
+      [value]="'Darron Banks'"
+      [className]="'main__input'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-input-field
+      [className]="'main__input'"
+      [type]="'email'"
+      [value]="'darronbanks@mail.com'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-input-field
+      [className]="'main__input'"
+      [type]="'password'"
+      [eyeOff]="true"
+      [value]="'••••••••'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-input-field
+      [className]="'main__input'"
+      [type]="'password'"
+      [eyeOff]="true"
+      [value]="'••••••••'"
+      [containerStyle]="{'margin-bottom': '14px'}"
+    />
+    <app-button
+      [className]="'main__button'"
+      [text]="'Sign up'"
+      [containerStyle]="{'margin-bottom': '20px'}"
+      [routerLink]="'/verify-your-phone-number'"
+    >
+      Sign Up
+    </app-button>
+    <div class="sign-up-footer">
+      <span class="footer-text">Already have an account?</span>
+      <a [routerLink]="'/'" class="footer-link"> Sign in. </a>
+    </div>
+
+    <div class="social">
+      <button (click)="$event.preventDefault(); $event.stopPropagation()">
+        <img [src]="svg.facebook" alt="facebook icon" />
+      </button>
+      <button (click)="$event.preventDefault(); $event.stopPropagation()">
+        <img [src]="svg.twitter" alt="facebook icon" />
+      </button>
+      <button (click)="$event.preventDefault(); $event.stopPropagation()">
+        <img [src]="svg.google" alt="facebook icon" />
+      </button>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,22 @@
+<app-header [showGoBack]="true" [title]="'Exchange rates'" />
+
+<main class="exchange-main">
+  <div class="exchange-header-row">
+    <span class="exchange-header-label">Currency</span>
+    <span class="exchange-header-label">$1</span>
+    <span class="exchange-header-label">in Dollars</span>
+  </div>
+  <ul>
+    <li *ngFor="let item of rates" class="exchange-rate-row">
+      <div class="exchange-rate-info">
+        <div class="exchange-rate-info-main">
+          <img [src]="item.currencyIcon" alt="currency" />
+          <h5>{{ item.code }}</h5>
+        </div>
+        <span class="exchange-rate-name">{{ item.name }}</span>
+      </div>
+      <h5>{{ item.per1USD }}</h5>
+      <h5>{{ item.toUSD }}</h5>
+    </li>
+  </ul>
+</main>

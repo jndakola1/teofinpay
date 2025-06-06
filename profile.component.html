@@ -1,0 +1,41 @@
+<app-header [showGoBack]="true" [title]="'Profile'" />
+
+<main class="profile-main">
+  <!-- user info -->
+  <div class="profile-user-info">
+    <img
+      src="https://george-fx.github.io/teofin-data/photos/01.jpg"
+      alt="user"
+      class="profile-user-avatar"
+    />
+    <div class="profile-user-data">
+      <span class="profile-user-name">Cristina Wolf</span>
+      <span class="profile-user-phone">+1 954 621 7845</span>
+    </div>
+  </div>
+
+  <ul class="profile-menu-list">
+    <app-profile-menu-item
+      [title]="'Personal info'"
+      [icon]="svg.profileMenuUser"
+      [routerLink]="'/edit-personal-info'"
+    />
+    <app-profile-menu-item
+      [icon]="svg.profileMenuMessage"
+      [title]="'Notifications'"
+      [routerLink]="'/order-history'"
+      [showSwitcher]="true"
+    />
+    <app-profile-menu-item
+      [icon]="svg.faceId"
+      [title]="'Face ID'"
+      [routerLink]="'/order-history'"
+      [showSwitcher]="true"
+    />
+    <app-profile-menu-item
+      [icon]="svg.pmLogout"
+      [title]="'Log Out'"
+      [routerLink]="'/'"
+    />
+  </ul>
+</main>

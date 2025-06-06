@@ -1,0 +1,19 @@
+<app-header [showGoBack]="true" [title]="'Mobile payment'" />
+
+<main class="mobile-payment-main">
+  <app-input-field
+    [value]="'+171 234 567 890'"
+    [containerStyle]="{'margin-bottom': '14px'}"
+  />
+  <span class="mobile-payment-balance">Your balance: 4 863.27 USD</span>
+  <div class="mobile-payment-amount-row">
+    <div class="mobile-payment-amount-box">
+      <span class="mobile-payment-amount">$10.00</span>
+    </div>
+    <span class="mobile-payment-fee">No fees</span>
+  </div>
+</main>
+
+<section class="mobile-payment-section">
+  <app-button [text]="'Confirm'" [routerLink]="['/payment-success']" />
+</section>

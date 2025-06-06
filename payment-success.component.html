@@ -1,0 +1,22 @@
+<img src="./assets/bg/03.png" alt="bg" class="background payment-success-bg" />
+
+<main class="payment-success-main">
+  <div class="payment-success-content">
+    <img [src]="svg.successCheck" alt="success-check" />
+    <span class="payment-success-title">Success!</span>
+    <span class="payment-success-amount">$ 364.00</span>
+    <p class="payment-success-desc">
+      Your payment has been <br />
+      processed!
+    </p>
+  </div>
+</main>
+
+<section class="payment-success-section">
+  <app-button
+    [text]="'Send Receipt'"
+    [colorScheme]="'secondary'"
+    [containerStyle]="{'margin-bottom': '14px'}"
+  />
+  <app-button [text]="'Done'" [routerLink]="'/dashboard'" />
+</section>

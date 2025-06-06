@@ -1,0 +1,134 @@
+<!-- <img src="./assets/bg/02.png" alt="bg" class="background" /> -->
+
+<main class="main-container">
+  <div class="deposits-header">
+    <h2 class="deposits-header-title">Deposits</h2>
+    <img [src]="svg.info" class="deposits-header-info" />
+  </div>
+
+  <!-- CURRENT DEPOSITS -->
+  <section class="deposits-section">
+    <span class="deposits-section-label">Current deposits</span>
+    <ul class="deposits-list">
+      <li *ngFor="let deposit of deposits" class="deposits-list-item">
+        <!-- info -->
+        <div class="deposits-list-info">
+          <!-- icons -->
+          <div class="deposits-list-icon">
+            <img
+              [src]="
+                deposit.status === 'active'
+                  ? svg.depositBox
+                  : svg.depositCompleted
+              "
+              class="deposits-list-icon-img"
+            />
+          </div>
+          <!-- text -->
+          <div class="deposits-list-content">
+            <!-- text -->
+            <div class="deposits-list-row">
+              <span>
+                <span class="deposits-list-amount">
+                  {{ deposit.amount.toFixed(2) }}
+                </span>
+                <span class="deposits-list-currency">
+                  {{ deposit.currency }}
+                </span></span
+              >
+              <h5>{{ deposit.interestRate }}%</h5>
+            </div>
+            <!-- text -->
+            <div class="deposits-list-period-row">
+              <span class="deposits-list-period"
+                >{{ deposit.period.start | date : 'MMM d' }} -
+                {{ deposit.period.end | date : 'MMM d, yyyy' }}</span
+              >
+              <div class="deposits-list-profit">+ {{ deposit.profit }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- buttons -->
+        <ul class="deposits-list-actions">
+          <li *ngFor="let action of deposit.actions">
+            <a
+              (click)="$event.stopPropagation(); $event.preventDefault()"
+              class="deposits-list-action-link"
+              [routerLink]="action.link"
+              [style.background-color]="action.color"
+            >
+              <span class="deposits-list-action-label">
+                {{ action.label }}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CURRENT MONEYBOXES -->
+  <section>
+    <ul class="moneybox-list">
+      <li *ngFor="let moneybox of moneyboxes" class="moneybox-list-item">
+        <div class="moneybox-list-row">
+          <img [src]="svg.piggyBank" />
+          <span class="moneybox-list-title">{{ moneybox.title }}</span>
+          <div>
+            <span class="moneybox-list-amount"
+              >{{ moneybox.targetAmount.toFixed(2) }}
+            </span>
+            <span class="moneybox-list-currency">{{ moneybox.currency }}</span>
+          </div>
+        </div>
+        <!-- progress -->
+        <div class="moneybox-progress-bar">
+          <div class="moneybox-progress-bar__fill"></div>
+        </div>
+        <!-- result -->
+        <div class="moneybox-result">
+          <div>
+            <span class="moneybox-result-main">650</span>
+            <span class="moneybox-result-currency">.27 USD</span>
+          </div>
+        </div>
+        <!-- buttons -->
+        <ul class="moneybox-buttons">
+          <li *ngFor="let action of moneybox.buttons">
+            <a
+              (click)="$event.stopPropagation(); $event.preventDefault()"
+              class="moneybox-button"
+              [routerLink]="action.link"
+              [style.background-color]="action.color"
+            >
+              <span class="moneybox-button-label">
+                {{ action.label }}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<!-- BUTTONS -->
+<section class="deposits-bottom-buttons">
+  <a
+    class="deposits-bottom-btn deposits-bottom-btn--moneybox"
+    (click)="$event.stopPropagation(); $event.preventDefault()"
+    [routerLink]="'/open-moneybox'"
+  >
+    <span class="deposits-bottom-btn-label-moneybox">+ Moneybox</span>
+  </a>
+  <a
+    class="deposits-bottom-btn deposits-bottom-btn--deposit"
+    (click)="$event.stopPropagation(); $event.preventDefault()"
+    [routerLink]="'/open-deposit'"
+  >
+    <span class="deposits-bottom-btn-label">+ Deposit</span>
+  </a>
+</section>
+
+<app-bottom-tab-bar />

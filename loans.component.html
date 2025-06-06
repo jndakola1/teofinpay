@@ -1,0 +1,74 @@
+<main class="main-container">
+  <!-- TITLE -->
+  <section>
+    <div class="loans-title-row">
+      <h2 class="loans-title">Loans</h2>
+      <img [src]="svg.info" class="loans-info-icon" />
+    </div>
+  </section>
+
+  <!-- LOANS -->
+  <section>
+    <span class="loans-current-title">Current loans</span>
+    <ul class="loans-list">
+      <li class="loans-list-item" *ngFor="let item of loans">
+        <!-- top info -->
+        <div class="loans-top-info">
+          <img [src]="svg.loansInactive" />
+          <div class="loans-amount-block">
+            <span>{{ item.amount.toFixed(2) }}</span>
+            <span class="loans-currency">{{ item.currency }}</span>
+          </div>
+          <button
+            class="loans-action-btn"
+            (click)="$event.stopPropagation(); $event.preventDefault()"
+          >
+            <span class="loans-action-label">{{ item.action }}</span>
+          </button>
+        </div>
+        <!-- bottom info -->
+        <ul class="loans-bottom-info">
+          <!-- left column -->
+          <li>
+            <div class="loans-bottom-block">
+              <span class="loans-bottom-label">Rate</span>
+              <span class="loans-bottom-value">{{ item.rate }} %</span>
+            </div>
+            <div class="loans-bottom-block">
+              <span class="loans-bottom-label">Monthly payment</span>
+              <span class="loans-bottom-value"
+                >{{ item.monthlyPayment.toFixed(2) }} USD</span
+              >
+            </div>
+          </li>
+          <!-- right column -->
+          <li>
+            <div class="loans-bottom-block">
+              <span class="loans-bottom-label">Period</span>
+              <span class="loans-bottom-value"
+                >{{ item.periodMonths }} months</span
+              >
+            </div>
+            <div class="loans-bottom-block">
+              <span class="loans-bottom-label">Total paid</span>
+              <span class="loans-bottom-value"
+                >{{ item.totalPaid.toFixed(2) }} USD</span
+              >
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<!-- BUTTON -->
+<section class="loans-button-container">
+  <app-button
+    class="loans-button"
+    [text]="'+ new Loan'"
+    [routerLink]="['/open-new-loan']"
+  />
+</section>
+
+<app-bottom-tab-bar />

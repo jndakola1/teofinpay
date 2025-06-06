@@ -1,0 +1,7 @@
+<div
+  class="app-container"
+  [@routeAnimations]="prepareRoute(outlet)"
+  [ngStyle]="{'max-width': isMobile ? '100%' : 'var(--screen-width)'}"
+>
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

@@ -1,0 +1,20 @@
+<main class="main-container">
+  <!-- TITLE -->
+  <h2 class="notification-title">Notifications</h2>
+
+  <ul>
+    <li *ngFor="let item of notifications" class="notification-list-item">
+      <div class="notification-item-header">
+        <img [src]="item.icon" />
+        <span class="notification-item-title">{{ item.title }}</span>
+      </div>
+      <p class="notification-item-desc">
+        {{ item.description }}
+      </p>
+      <hr class="notification-item-divider" />
+      <span class="notification-item-date">{{ item.date }}</span>
+    </li>
+  </ul>
+</main>
+
+<app-bottom-tab-bar />

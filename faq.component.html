@@ -1,0 +1,51 @@
+<app-header [showGoBack]="true" [title]="'FAQ'" />
+
+<main class="faq-main">
+  <ul class="faq-list">
+    <li
+      *ngFor="let item of faq; let last = last"
+      class="faq-list-item order-history__item"
+      [ngStyle]="{
+        'margin-bottom': last ? '0' : '10px',
+      }"
+    >
+      <details
+        class="faq-details"
+        [open]="openAccordions.has(item.id)"
+        (toggle)="toggleAccordion(item.id)"
+      >
+        <!-- header -->
+        <summary
+          class="faq-summary"
+          [ngStyle]="{
+            'border-bottom-right-radius': openAccordions.has(item.id)
+              ? '0'
+              : '10px',
+            'border-bottom-left-radius': openAccordions.has(item.id)
+              ? '0'
+              : '10px',
+            'border-bottom': openAccordions.has(item.id)
+              ? '1px solid #CED6E1'
+              : 'none',
+          }"
+        >
+          <section>
+            <span
+              class="faq-question"
+              [ngStyle]="{
+                color: openAccordions.has(item.id)
+                  ? 'var(--link-color)'
+                  : 'var(--main-color)'
+              }"
+              >{{ item.question }}</span
+            >
+          </section>
+        </summary>
+        <!-- Order details -->
+        <section class="faq-answer-section">
+          <p class="faq-answer">{{ item.answer }}</p>
+        </section>
+      </details>
+    </li>
+  </ul>
+</main>

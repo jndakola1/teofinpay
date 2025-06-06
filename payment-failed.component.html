@@ -1,0 +1,23 @@
+<img src="./assets/bg/03.png" alt="bg" class="background payment-failed-bg" />
+
+<main class="payment-failed-main">
+  <div class="payment-failed-content">
+    <img [src]="svg.paymentFailed" alt="success-check" />
+    <span class="payment-failed-title">Oops!</span>
+    <span class="payment-failed-amount">$ 364.00</span>
+    <p class="payment-failed-desc">
+      Something went wrong. Please try <br />
+      again or contact the support team.
+    </p>
+  </div>
+</main>
+
+<section class="payment-failed-section">
+  <app-button
+    [text]="'Back to dashboard'"
+    [colorScheme]="'secondary'"
+    [routerLink]="'/dashboard'"
+    [containerStyle]="{'margin-bottom': '14px'}"
+  />
+  <app-button [text]="'Try Again'" />
+</section>

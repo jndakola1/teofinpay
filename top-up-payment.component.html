@@ -1,0 +1,62 @@
+<app-header [showGoBack]="true" [title]="'Top-Up payment'" />
+
+<main class="top-up-payment-main">
+  <!-- Use сard -->
+  <section class="top-up-payment-section">
+    <span class="top-up-payment-label">Cards</span>
+    <ul class="top-up-payment-card-list">
+      <li *ngFor="let item of cards">
+        <button
+          class="top-up-payment-card-btn"
+          [style]="{
+            'border': selectedCard === item.id ? '1px solid #868698' : '1px solid #fff',
+          }"
+          (click)="
+            $event.stopPropagation();
+            $event.preventDefault();
+            setSelectedCard(item.id)
+          "
+        >
+          <div class="top-up-payment-card-bg">
+            <span class="top-up-payment-card-label">teofin</span>
+          </div>
+          <div class="top-up-payment-card-info">
+            <span class="top-up-payment-card-number">{{ item.number }}</span>
+            <h6>{{ item.balance }}</h6>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Entrepreneur accounts -->
+  <section class="top-up-payment-section">
+    <span class="top-up-payment-label">Entrepreneur accounts</span>
+    <button class="top-up-payment-entrepreneur-btn">
+      <img [src]="svg.usd" />
+      <div>
+        <span class="top-up-payment-entrepreneur-number"
+          >US**********************4571</span
+        >
+        <h6 class="top-up-payment-entrepreneur-balance">39 863.62 USD</h6>
+      </div>
+    </button>
+  </section>
+
+  <!-- Other methods -->
+  <section>
+    <ul class="top-up-payment-other-list">
+      <li *ngFor="let item of otherMethods">
+        <a class="top-up-payment-other-link" routerLink="#">
+          <img [src]="item.icon" alt="icon" class="top-up-payment-other-icon" />
+          <h6>{{ item.title }}</h6>
+          <img
+            [src]="svg.info"
+            class="top-up-payment-other-info"
+            *ngIf="item.title !== 'Card from another bank'"
+          />
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>

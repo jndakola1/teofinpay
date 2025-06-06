@@ -1,0 +1,138 @@
+<app-header [showGoBack]="true" [title]="'Open deposit'" />
+
+<main class="open-deposit-main">
+  <!-- Choose currency: -->
+  <section class="open-deposit-section open-deposit-section--currency">
+    <span class="open-deposit-label">Choose currency</span>
+    <ul class="open-deposit-currency-list">
+      <li *ngFor="let item of currencies">
+        <button
+          class="open-deposit-currency-btn"
+          [ngStyle]="{
+            'background-color':
+              selectedCurrency === item.id
+                ? 'var(--main-dark)'
+                : 'var(--white-color)'
+          }"
+          (click)="
+            $event.stopPropagation();
+            $event.preventDefault();
+            selectedCurrency = item.id
+          "
+        >
+          <span
+            class="open-deposit-currency-label"
+            [ngStyle]="{
+              color:
+                selectedCurrency === item.id
+                  ? 'var(--white-color)'
+                  : 'var(--body-text-color)'
+            }"
+            >{{ item.label }}</span
+          >
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Choose deposit period: -->
+  <section class="open-deposit-section open-deposit-section--period">
+    <span class="open-deposit-label">Choose deposit period:</span>
+    <ul class="open-deposit-period-list">
+      <li *ngFor="let item of depositPeriods">
+        <button
+          class="open-deposit-period-btn"
+          [ngStyle]="{
+            'background-color':
+              selectedDepositPeriod === item.id
+                ? 'var(--main-dark)'
+                : 'var(--white-color)'
+          }"
+          (click)="
+            $event.stopPropagation();
+            $event.preventDefault();
+            selectedDepositPeriod = item.id
+          "
+        >
+          <span
+            class="open-deposit-period-label"
+            [ngStyle]="{
+              color:
+                selectedDepositPeriod === item.id
+                  ? 'var(--white-color)'
+                  : 'var(--body-text-color)'
+            }"
+            >{{ item.label }}</span
+          >
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Amount: -->
+  <section class="open-deposit-section open-deposit-section--amount">
+    <div class="open-deposit-amount-row">
+      <div class="open-deposit-amount-block">
+        <span class="open-deposit-amount-main">$1000.</span>
+        <span class="open-deposit-amount-fraction">00</span>
+      </div>
+      <span class="open-deposit-amount-rate">You rate is 8%.</span>
+    </div>
+  </section>
+
+  <!-- Use сard -->
+  <section class="open-deposit-section open-deposit-section--card">
+    <span class="open-deposit-label open-deposit-label--card">Use card:</span>
+    <ul class="open-deposit-card-list">
+      <li *ngFor="let item of cards">
+        <button
+          class="open-deposit-card-btn"
+          [style]="{
+            border:
+              selectedCard === item.id ? '1px solid #868698' : '1px solid #fff'
+          }"
+          (click)="
+            $event.stopPropagation();
+            $event.preventDefault();
+            setSelectedCard(item.id)
+          "
+        >
+          <div class="open-deposit-card-bg">
+            <span class="open-deposit-card-label">teofin</span>
+          </div>
+          <div class="open-deposit-card-info">
+            <span class="open-deposit-card-number">{{ item.number }}</span>
+            <h6>{{ item.balance }}</h6>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Early deposit withdrawal -->
+  <section class="open-deposit-section open-deposit-section--early">
+    <div class="open-deposit-early-row">
+      <span class="open-deposit-early-label">Early deposit withdrawal</span>
+      <button
+        class="open-deposit-early-switch"
+        [ngStyle]="{
+          'background-color':
+            earlyDepositWithdrawal === true ? '#3eb290' : '#BCBCBC',
+          'justify-content':
+            earlyDepositWithdrawal === true ? 'flex-end' : 'flex-start'
+        }"
+        (click)="
+          $event.stopPropagation();
+          $event.preventDefault();
+          earlyDepositWithdrawal = !earlyDepositWithdrawal
+        "
+      >
+        <div class="open-deposit-early-switch-dot"></div>
+      </button>
+    </div>
+  </section>
+</main>
+
+<section class="open-deposit-bottom-section">
+  <app-button [text]="'Open deposit'" [routerLink]="'/deposits'" />
+</section>

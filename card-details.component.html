@@ -1,0 +1,99 @@
+<app-header [showGoBack]="true" [title]="'Card details'" />
+
+<main class="card-details-main">
+  <!-- Card -->
+  <section class="card-details-section card-details-section--card">
+    <div class="card-details-card">
+      <span class="card-details-card-type">teofin platinum</span>
+      <div class="card-details-card-row card-details-card-row--number">
+        <span class="card-details-card-number">4358 **** **** 4253</span>
+        <img [src]="svg.cvv" alt="card" />
+      </div>
+      <div class="card-details-card-row card-details-card-row--labels">
+        <span class="card-details-card-label">balance</span>
+        <span class="card-details-card-label">expire</span>
+      </div>
+      <div class="card-details-card-row card-details-card-row--bottom">
+        <span class="card-details-card-balance">
+          $ 4 863<span class="card-details-card-balance-fraction">.27</span>
+        </span>
+        <span class="card-details-card-expire">12/24</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Another info -->
+  <section class="card-details-section card-details-section--info">
+    <ul class="card-details-info-list">
+      <li>
+        <button class="card-details-info-btn">
+          <img [src]="svg.wallet" alt="star" />
+          <h5 class="card-details-info-title">Add to Apple Pay</h5>
+          <img [src]="svg.plus" alt="star" />
+        </button>
+      </li>
+      <li>
+        <button class="card-details-info-btn" (click)="setDefaultCard()">
+          <img [src]="svg.star" alt="star" />
+          <h5 class="card-details-info-title">Default card</h5>
+          <!-- switcher -->
+          <div
+            class="card-details-switcher"
+            [ngStyle]="{
+              'justify-content': isDefault ? 'flex-end' : 'flex-start',
+              backgroundColor: isDefault ? '#3eb290' : '#ced6e1'
+            }"
+          >
+            <div class="card-details-switcher-dot"></div>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Limits -->
+  <section class="card-details-section card-details-section--limits">
+    <span class="card-details-limits-title">Limits</span>
+    <ul class="card-details-limits-list">
+      <li *ngFor="let limit of limits">
+        <a class="card-details-limits-link" [routerLink]="limit.link">
+          <div class="card-details-limits-info">
+            <div class="card-details-limits-info-row">
+              <img [src]="limit.icon" alt="icon" />
+              <h5 class="card-details-limits-type">{{ limit.type }}</h5>
+            </div>
+            <span class="card-details-limits-default">{{
+              limit.defaultLimit
+            }}</span>
+          </div>
+          <img [src]="svg.rightArrow" alt="arrow" />
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Security -->
+  <section class="card-details-section card-details-section--security">
+    <span class="card-details-security-title">Security</span>
+    <ul class="card-details-security-list">
+      <li *ngFor="let item of security">
+        <a class="card-details-security-link" [routerLink]="item.link">
+          <img [src]="item.icon" alt="icon" />
+          <h5
+            class="card-details-security-title-item"
+            [ngStyle]="{
+              color:
+                item.title === 'Block the card' ||
+                item.title === 'Close the card'
+                  ? 'var(--link-color)'
+                  : 'var(--main-dark)'
+            }"
+          >
+            {{ item.title }}
+          </h5>
+          <img [src]="svg.rightArrow" alt="arrow" />
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>
